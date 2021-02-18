@@ -3,14 +3,7 @@ import { useState } from "react";
 import InputX from "../Input";
 import { INPUT_TYPE } from "../Input/index.d";
 
-import {
-  LoginForm,
-  WelcomeMessage,
-  Tip,
-  Label,
-  Button,
-  P,
-} from "../../styles/form";
+import { LoginForm, WelcomeMessage, Tip, Label, Button, P } from "./styles";
 
 import validateEmail from "../../validators/email";
 import validatePassword from "../../validators/password";

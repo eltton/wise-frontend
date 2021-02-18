@@ -28,13 +28,27 @@ export const Container = styled.div<IInputStylesProps>`
 
     font-style: normal;
     font-weight: normal;
-    font-size: 10px;
+    font-size: 12px;
     line-height: 48px;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
     outline: none;
+
+    ::-webkit-input-placeholder {
+      /* Edge */
+      color: ${({ theme }) => theme.colors.text};
+    }
+
+    :-ms-input-placeholder {
+      /* Internet Explorer 10-11 */
+      color: ${({ theme }) => theme.colors.text};
+    }
+
+    ::placeholder {
+      color: ${({ theme }) => theme.colors.text};
+    }
   }
 `;
 

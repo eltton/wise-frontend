@@ -31,23 +31,6 @@ export const Label = styled.label`
   font-size: 10px;
 `;
 
-// export const Input = styled.input`
-//   margin-top: 8px;
-//   width: 100%;
-//   height: 48px;
-//   border: 1px solid #989fdb;
-//   box-sizing: border-box;
-//   border-radius: 8px;
-//   padding-left: 17px;
-//   font-size: 12px;
-//   font-weight: 400;
-//   line-height: 48px;
-//   margin-bottom: 10px;
-//   color: #989fdb;
-//   background: transparent;
-//   font-family: "Montserrat";
-// `;
-
 export const Button = styled.button`
   width: 70%;
   padding: 14px;
@@ -83,32 +66,3 @@ export const P = styled.p`
     color: #989fdb;
   }
 `;
-
-// export const Span = styled.span`
-//   align-items: center;
-//   color: #ff377f;
-
-//   display: flex;
-//   font-size: 10px;
-//   height: 14px;
-//   line-height: 48px;
-//   margin-left: 20px;
-//   /* margin-top: 8px; */
-// `;
-
-// export const Icon = styled.img`
-//   position: absolute;
-//   bottom: 40%;
-//   right: 30px;
-//   display: flex;
-//   width: 14px;
-//   height: 14px;
-//   /* border: solid 5px pink; */
-// `;
-
-// export const Container = styled.div`
-//   position: relative;
-//   Input {
-//     /* border: solid 1px #ff377f; */
-//   }
-// `;
