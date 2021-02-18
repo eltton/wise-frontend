@@ -1,23 +1,22 @@
 {
-  "name": "with-styled-components",
-  "version": "1.0.0",
+  "name": "wiser-frontend",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "dev": "next",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start"
   },
   "dependencies": {
-    "next": "latest",
-    "react": "^16.8.0",
-    "react-dom": "^16.8.0",
-    "react-is": "^16.8.0",
-    "styled-components": "^5.0.0"
+    "@types/styled-components": "^5.1.7",
+    "next": "10.0.7",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "styled-components": "^5.2.1"
   },
   "devDependencies": {
     "@types/node": "^14.14.28",
     "@types/react": "^17.0.2",
-    "babel-plugin-styled-components": "^1.8.0",
     "typescript": "^4.1.5"
-  },
-  "license": "MIT"
+  }
 }
