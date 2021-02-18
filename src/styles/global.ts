@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-export default createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
@@ -8,12 +8,17 @@ export default createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 
     font-family: 'Montserrat', sans-serif;
+    
+    background-color: #130525;
   }
 
   html, body {
     min-height: 100vh;
+
+    @media screen and (min-width: 768px) {
+    background-color: #FAF5FF;
+  }
   }
 `;

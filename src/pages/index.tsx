@@ -1,16 +1,17 @@
 import React from "react";
-import Head from "next/head";
+
+import { Container, Background, Content } from "../styles/login";
+import Form from "../components/Form";
 
 const Home: React.FC = () => {
   return (
     <div>
-      <Head>
-        <title>Homepage</title>
-      </Head>
-
-      <main>
-        <h1>Hello World!</h1>
-      </main>
+      <Container>
+        <Background />
+        <Content>
+          <Form />
+        </Content>
+      </Container>
 
       <footer></footer>
     </div>
