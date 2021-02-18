@@ -47,3 +47,18 @@ export const Content = styled.div`
   /* width: 100%; */
   /* max-width: 600px; */
 `;
+
+export const ErrorMessage = styled.p`
+  align-items: center;
+  color: ${({ theme }) => theme.colors.error};
+  display: flex;
+  font-size: 10px;
+  height: 14px;
+  line-height: 48px;
+  margin-left: 20px;
+  margin-top: 8px;
+
+  @media (max-width: 642px) {
+    margin-bottom: 0px;
+  }
+`;

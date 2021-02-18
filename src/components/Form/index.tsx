@@ -1,93 +1,90 @@
 import React from "react";
-import styled from "styled-components";
+import { useState } from "react";
+import InputX from "../Input";
+import { INPUT_TYPE } from "../Input/index.d";
 
-const LoginForm = styled.form`
-  border-radius: 8px;
-  padding-left: 28px;
-  padding-right: 28px;
-  width: 100%;
-  margin-bottom: -50px; //mobile
-`;
+import {
+  LoginForm,
+  WelcomeMessage,
+  Tip,
+  Label,
+  Button,
+  P,
+} from "../../styles/form";
 
-const WelcomeMessage = styled.h1`
-  font-weight: 400;
-  font-style: normal;
-  text-align: center;
-  color: #383e71;
-`;
+import validateEmail from "../../validators/email";
+import validatePassword from "../../validators/password";
+import { ChangeEvent } from "react";
+import { FormEvent } from "react";
+import { ErrorMessage } from "../../styles/login";
 
-const Tip = styled.h3`
-  font-weight: 600;
-  font-size: 11px;
-  line-height: 20px;
-  text-align: center;
-  color: #989fdb;
-  border: 0;
-  width: 100%;
-`;
+const Form: React.FC<any> = () => {
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
-const Label = styled.label`
-  font-weight: 400;
-  font-size: 10px;
-`;
+  const [isEmailValid, setIsEmailValid] = useState<boolean | undefined>(
+    undefined
+  );
+  const [isPasswordValid, setIsPasswordValid] = useState<boolean | undefined>(
+    undefined
+  );
 
-const Input = styled.input`
-  margin-top: 8px;
-  width: 100%;
-  height: 48px;
-  border: 1px solid #989fdb;
-  box-sizing: border-box;
-  border-radius: 8px;
-  padding-left: 17px;
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 48px;
-  margin-bottom: 10px;
-  color: #989fdb;
-  background: transparent;
-  font-family: "Montserrat";
-`;
+  async function handleEmailBlur(e: { target: { value: any } }): Promise<void> {
+    try {
+      await validateEmail.validate({
+        email: e.target.value,
+      });
 
-const Button = styled.button`
-  width: 70%;
-  padding: 14px;
-  background: linear-gradient(267.79deg, #383e71 0%, #9d25b0 99.18%);
-  /* box-shadow: 5px 1px 15px #cf99db; */
-  border-radius: 8px;
-  border: none;
-  outline: none;
-
-  color: #fff;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 20px;
-
-  position: relative; //mobile
-  bottom: -60px;
-  /* top: 50%; */
-  left: 50%;
-  transform: translate(-50%, -50%);
-`;
-
-const P = styled.p`
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 10px;
-  text-align: center;
-  color: #989fdb;
-
-  position: relative; //mobile
-  bottom: -50px;
-
-  a {
-    color: #989fdb;
+      setIsEmailValid(true);
+    } catch {
+      setIsEmailValid(false);
+    }
   }
-`;
 
-const Form: React.FC = () => {
+  /**
+   * I handle the email value change.
+   *
+   * :returns: promise with nothing
+   */
+  function handleEmailChange(e: ChangeEvent<HTMLInputElement>): void {
+    // set current value at local state
+    setEmail(e.target.value);
+
+    // reset email valid flag
+    setIsEmailValid(undefined);
+  }
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>): Promise<void> {
+    // prevent reload page
+    e.preventDefault();
+  }
+
+  function handlePasswordChange(e: ChangeEvent<HTMLInputElement>): void {
+    // set current value at local state
+    setPassword(e.target.value);
+
+    // reset password valid flag
+    setIsPasswordValid(undefined);
+  }
+
+  async function handlePasswordBlur(e): Promise<void> {
+    // validate password value
+    try {
+      await validatePassword.validate({
+        password: e.target.value,
+      });
+
+      // valid password: set valid password flag
+      setIsPasswordValid(true);
+    } catch {
+      // invalid password: set password flag as invalid
+      setIsPasswordValid(false);
+    }
+  }
+
   return (
     <>
-      <LoginForm>
+      <LoginForm onSubmit={handleSubmit}>
         <WelcomeMessage>
           Olá, seja <br />
           bem-vindo!
@@ -96,15 +93,25 @@ const Form: React.FC = () => {
 
         <Label htmlFor="email">E-MAIL</Label>
 
-        <Input name="email" placeholder="user.name@mail.com" id="email" />
+        <InputX
+          placeholder="user.name@mail.com"
+          type={INPUT_TYPE.EMAIL}
+          onChangeCallback={handleEmailChange}
+          isValid={isEmailValid}
+          onBlur={handleEmailBlur}
+        />
+        {isEmailValid === false && (
+          <ErrorMessage>Digite um e-mail válido;</ErrorMessage>
+        )}
 
         <Label htmlFor="password">SENHA</Label>
 
-        <Input
-          name="password"
-          type="password"
+        <InputX
           placeholder="*******"
-          id="password"
+          type={INPUT_TYPE.PASSWORD}
+          onChangeCallback={handlePasswordChange}
+          isValid={isPasswordValid}
+          onBlur={handlePasswordBlur}
           autoComplete="off"
         />
 

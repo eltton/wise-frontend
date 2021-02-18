@@ -3,6 +3,8 @@ import Head from "next/head";
 import { AppProps } from "next/app";
 
 import { GlobalStyle } from "../styles/global";
+import { theme } from "../styles/global";
+import { ThemeProvider } from "styled-components";
 
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
@@ -16,7 +18,9 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
         <title>Login</title>
       </Head>
       <GlobalStyle />
-      <Component {...pageProps} />
+      <ThemeProvider theme={theme}>
+        <Component {...pageProps} />
+      </ThemeProvider>
     </>
   );
 };
