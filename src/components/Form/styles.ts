@@ -4,7 +4,7 @@ export const LoginForm = styled.form`
   border-radius: 8px;
   padding-left: 28px;
   padding-right: 28px;
-  width: 100%;
+  max-width: 311px;
   margin-bottom: -40px; //mobile
 `;
 
@@ -17,6 +17,12 @@ export const WelcomeMessage = styled.h1`
   /* line-height: 64px; */
   font-size: 24px;
   margin-top: 20px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 40px;
+    text-align: left;
+    line-height: 48px;
+  }
 `;
 
 export const Tip = styled.h3`
@@ -27,6 +33,11 @@ export const Tip = styled.h3`
   color: #989fdb;
   border: 0;
   width: 100%;
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    text-align: left;
+  }
 `;
 
 export const Label = styled.label`
@@ -54,6 +65,12 @@ export const Button = styled.button`
   /* top: 50%; */
   left: 50%;
   transform: translate(-50%, -50%);
+
+  @media screen and (min-width: 768px) {
+    /* font-size: 16px; */
+    /* text-align: left; */
+    width: 100%;
+  }
 `;
 
 export const P = styled.p`
@@ -68,5 +85,9 @@ export const P = styled.p`
 
   a {
     color: #989fdb;
+  }
+
+  @media screen and (min-width: 768px) {
+    /* font-size: 16px; */
   }
 `;

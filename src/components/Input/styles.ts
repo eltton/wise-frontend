@@ -23,18 +23,19 @@ export const Container = styled.div<IInputStylesProps>`
     border: none;
     width: 100%;
     max-height: 100%;
-    min-height: 14px;
+    min-height: 18px;
     font-family: ${({ theme }) => theme.font.family};
 
     font-style: normal;
     font-weight: normal;
     font-size: 12px;
-    line-height: 48px;
+    line-height: 60px;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
     outline: none;
+    /* height: 100%; */
 
     ::-webkit-input-placeholder {
       /* Edge */

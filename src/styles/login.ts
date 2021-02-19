@@ -12,7 +12,6 @@ export const Background = styled.div`
   /* border: solid 5px blue; */
   width: 100%;
   height: 50%;
-
   background-image: linear-gradient(
       0deg,
       #130525 0%,
@@ -21,9 +20,12 @@ export const Background = styled.div`
     url("/assets/bg.png");
   background-position-x: center;
   background-size: cover;
-
   @media screen and (min-width: 768px) {
     max-width: 40%;
+    height: 100%;
+  }
+  @media screen and (min-width: 1366px) {
+    max-width: 100%;
     height: 100%;
   }
 `;
@@ -36,16 +38,24 @@ export const Content = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
   width: 80%;
-  /* height: 100%; */
-  /* top: 50%; */
-  /* left: 50%; */
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* justify-content: center; */
-  /* width: 100%; */
-  /* max-width: 600px; */
+  @media screen and (min-width: 768px) {
+    position: relative;
+    width: 100%;
+    left: 0%;
+    top: 0%;
+    transform: translate(-0%, -0%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  @media screen and (min-width: 1366px) {
+    width: 70%;
+    justify-content: left;
+    margin-left: 100px;
+  }
 `;
 
 export const ErrorMessage = styled.p`
