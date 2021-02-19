@@ -5,7 +5,7 @@ export const LoginForm = styled.form`
   padding-left: 28px;
   padding-right: 28px;
   width: 100%;
-  margin-bottom: -50px; //mobile
+  margin-bottom: -40px; //mobile
 `;
 
 export const WelcomeMessage = styled.h1`
@@ -13,6 +13,10 @@ export const WelcomeMessage = styled.h1`
   font-style: normal;
   text-align: center;
   color: #383e71;
+  /* border: solid 3px green; */
+  /* line-height: 64px; */
+  font-size: 24px;
+  margin-top: 20px;
 `;
 
 export const Tip = styled.h3`
@@ -46,7 +50,7 @@ export const Button = styled.button`
   line-height: 20px;
 
   position: relative; //mobile
-  bottom: -60px;
+  bottom: -55px;
   /* top: 50%; */
   left: 50%;
   transform: translate(-50%, -50%);
@@ -60,7 +64,7 @@ export const P = styled.p`
   color: #989fdb;
 
   position: relative; //mobile
-  bottom: -50px;
+  bottom: -55px;
 
   a {
     color: #989fdb;
