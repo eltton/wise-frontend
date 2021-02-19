@@ -19,7 +19,7 @@ import { useEffect } from "react";
 
 import { IAppState } from "../../aggregates/index.d";
 
-const Form: React.FC<any> = () => {
+export const Form: React.FC<any> = () => {
   const [email, setEmail] = useState<string>("");
   const [isEmailValid, setIsEmailValid] = useState<boolean | undefined>(
     undefined
