@@ -37,8 +37,9 @@ yarn install
 ```sh
 yarn dev
 ```
-
-Disponivel em http://localhost:3000
+```sh
+localhost:3000
+```
 
 
 #URL e login padrão:
