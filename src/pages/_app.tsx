@@ -6,9 +6,20 @@ import { GlobalStyle } from "../styles/global";
 import { theme } from "../styles/global";
 import { ThemeProvider } from "styled-components";
 
+import reducers from "../aggregates/index";
+import Store from "../store/index";
+import { Provider } from "react-redux";
+import "antd/dist/antd.css";
+
+// combine reducers
+const reducer = Store.combineReducers(reducers);
+
+// create global redux store
+const store = Store.create(reducer);
+
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
-    <>
+    <Provider store={store}>
       <Head>
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
@@ -21,7 +32,7 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
       <ThemeProvider theme={theme}>
         <Component {...pageProps} />
       </ThemeProvider>
-    </>
+    </Provider>
   );
 };
 

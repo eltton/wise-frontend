@@ -10,26 +10,84 @@ import validatePassword from "../../validators/password";
 import { ChangeEvent } from "react";
 import { FormEvent } from "react";
 import { ErrorMessage } from "../../styles/login";
+import * as userAPI from "../../aggregates/user/api";
+
+import { useSelector } from "react-redux";
+import { useRouter } from "next/router";
+import notification from "antd/lib/notification";
+import { useEffect } from "react";
+// import {useState} from 'react';
+
+/**
+ * TYPES
+ */
+// import {ChangeEvent} from 'react';
+// import {FormEvent} from 'react';
+// import {INPUT_TYPE} from '../components/Input/index.d';
+import { IAppState } from "../../aggregates/index.d";
 
 const Form: React.FC<any> = () => {
+  // define getters and setters
   const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-
   const [isEmailValid, setIsEmailValid] = useState<boolean | undefined>(
     undefined
   );
   const [isPasswordValid, setIsPasswordValid] = useState<boolean | undefined>(
     undefined
   );
+  const [password, setPassword] = useState<string>("");
 
-  async function handleEmailBlur(e: { target: { value: any } }): Promise<void> {
+  // get isAuthorized flag from state
+  const isAuthorized = useSelector(
+    (state: IAppState) => state.user.isAuthorized
+  );
+
+  const isAuthorizing = useSelector(
+    (state: IAppState) => state.user.isAuthorizing
+  );
+
+  // get login erros from state
+  const loginError = useSelector((state: IAppState) => state.user.loginError);
+
+  // get router instance
+  const router = useRouter();
+
+  /**
+   * I handle the password field blur.
+   *
+   * :returns: promise with nothing
+   */
+  async function handlePasswordBlur(e): Promise<void> {
+    // validate password value
+    try {
+      await validatePassword.validate({
+        password: e.target.value,
+      });
+
+      // valid password: set valid password flag
+      setIsPasswordValid(true);
+    } catch {
+      // invalid password: set password flag as invalid
+      setIsPasswordValid(false);
+    }
+  }
+
+  /**
+   * I handle the email field blur.
+   *
+   * :returns: promise with nothing
+   */
+  async function handleEmailBlur(e): Promise<void> {
+    // validate email value
     try {
       await validateEmail.validate({
         email: e.target.value,
       });
 
+      // valid email: set valid email flag
       setIsEmailValid(true);
     } catch {
+      // invalid email: set email flag as invalid
       setIsEmailValid(false);
     }
   }
@@ -47,11 +105,11 @@ const Form: React.FC<any> = () => {
     setIsEmailValid(undefined);
   }
 
-  async function handleSubmit(e: FormEvent<HTMLFormElement>): Promise<void> {
-    // prevent reload page
-    e.preventDefault();
-  }
-
+  /**
+   * I handle the password value change.
+   *
+   * :returns: promise with nothing
+   */
   function handlePasswordChange(e: ChangeEvent<HTMLInputElement>): void {
     // set current value at local state
     setPassword(e.target.value);
@@ -60,20 +118,39 @@ const Form: React.FC<any> = () => {
     setIsPasswordValid(undefined);
   }
 
-  async function handlePasswordBlur(e): Promise<void> {
-    // validate password value
-    try {
-      await validatePassword.validate({
-        password: e.target.value,
-      });
+  /**
+   * I handle the submit event.
+   *
+   * :returns: promise with nothing
+   */
+  async function handleSubmit(e: FormEvent<HTMLFormElement>): Promise<void> {
+    // prevent reload page
+    e.preventDefault();
 
-      // valid password: set valid password flag
-      setIsPasswordValid(true);
-    } catch {
-      // invalid password: set password flag as invalid
-      setIsPasswordValid(false);
-    }
+    // call API
+    await userAPI.login(email, password);
   }
+
+  // listen to user login errors
+  useEffect(() => {
+    // there is login error: show error message
+    if (loginError !== null) {
+      notification.error({
+        message: "Erro",
+        description: "Usuário ou senha inválidos",
+        placement: "bottomLeft",
+      });
+      // console.log(notification.error);
+    }
+  }, [loginError]);
+
+  // listen to user authorized changes
+  useEffect(() => {
+    // user authorized: go to welcome page
+    if (isAuthorized === true) {
+      router.push("/welcome");
+    }
+  }, [isAuthorized]);
 
   return (
     <>
