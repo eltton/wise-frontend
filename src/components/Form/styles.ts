@@ -25,7 +25,7 @@ export const WelcomeMessage = styled.h1`
 
 export const Tip = styled.h3`
   font-weight: 600;
-  font-size: 11px;
+  font-size: 12px;
   line-height: 20px;
   text-align: center;
   color: #989fdb;
