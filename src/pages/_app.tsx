@@ -11,10 +11,8 @@ import Store from "../store/index";
 import { Provider } from "react-redux";
 import "antd/dist/antd.css";
 
-// combine reducers
 const reducer = Store.combineReducers(reducers);
 
-// create global redux store
 const store = Store.create(reducer);
 
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {

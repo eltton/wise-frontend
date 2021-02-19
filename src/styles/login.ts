@@ -1,7 +1,6 @@
 import styled, { keyframes } from "styled-components";
 
 export const Container = styled.main`
-  /* border: solid 5px pink; */
   height: 100vh;
   display: flex;
   align-items: stretch;
@@ -9,7 +8,6 @@ export const Container = styled.main`
 `;
 
 export const Background = styled.div`
-  /* border: solid 5px blue; */
   width: 100%;
   height: 50%;
   background-image: linear-gradient(
@@ -31,14 +29,13 @@ export const Background = styled.div`
 `;
 
 export const Content = styled.div`
-  /* border: solid 5px green; */
   border-radius: 8px;
   position: absolute;
   background-color: #faf5ff;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 80%;
+  width: 311px;
   @media screen and (min-width: 768px) {
     position: relative;
     width: 100%;
@@ -67,7 +64,6 @@ export const ErrorMessage = styled.p`
   line-height: 48px;
   margin-left: 20px;
   margin-top: 8px;
-
   @media (max-width: 642px) {
     margin-bottom: 0px;
   }

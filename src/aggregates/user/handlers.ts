@@ -1,6 +1,5 @@
 import * as events from "./events";
 import { authenticate } from "./utils";
-
 import { IEvent } from "../index.d";
 import { IUserLogin } from "./commands.d";
 import { loginErrors } from "./state.d";

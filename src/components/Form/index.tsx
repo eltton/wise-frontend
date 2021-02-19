@@ -2,21 +2,17 @@ import React from "react";
 import { useState } from "react";
 import InputX from "../Input";
 import { INPUT_TYPE } from "../Input/index.d";
-
 import { LoginForm, WelcomeMessage, Tip, Label, Button, P } from "./styles";
-
 import validateEmail from "../../validators/email";
 import validatePassword from "../../validators/password";
 import { ChangeEvent } from "react";
 import { FormEvent } from "react";
 import { ErrorMessage } from "../../styles/login";
 import * as userAPI from "../../aggregates/user/api";
-
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import notification from "antd/lib/notification";
 import { useEffect } from "react";
-
 import { IAppState } from "../../aggregates/index.d";
 
 export const Form: React.FC<any> = () => {
@@ -66,7 +62,6 @@ export const Form: React.FC<any> = () => {
   }
 
   function handleEmailChange(e: ChangeEvent<HTMLInputElement>): void {
-    // set current value at local state
     setEmail(e.target.value);
 
     setIsEmailValid(undefined);
@@ -96,7 +91,6 @@ export const Form: React.FC<any> = () => {
 
   useEffect(() => {
     if (isAuthorized === true) {
-      // router.push("/Dashbord");
       notification.success({
         message: "Sucess",
         description: "Login efetuado com sucesso!",

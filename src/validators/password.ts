@@ -1,12 +1,5 @@
-/**
- * IMPORTS
- */
-import * as Yup from 'yup';
+import * as Yup from "yup";
 
-
-/**
- * EXPORTS
- */
 export default Yup.object().shape({
-    password: Yup.string().required()
+  password: Yup.string().required(),
 });

@@ -5,7 +5,6 @@ export const LoginForm = styled.form`
   padding-left: 28px;
   padding-right: 28px;
   max-width: 311px;
-  /* max-height: 377px; */
   margin-bottom: -40px; //mobile
 `;
 
@@ -14,8 +13,6 @@ export const WelcomeMessage = styled.h1`
   font-style: normal;
   text-align: center;
   color: #383e71;
-  /* border: solid 3px green; */
-  /* line-height: 64px; */
   font-size: 24px;
   margin-top: 20px;
 
@@ -48,10 +45,9 @@ export const Label = styled.label`
 `;
 
 export const Button = styled.button`
-  width: 70%;
+  width: 168px;
   padding: 14px;
   background: linear-gradient(267.79deg, #383e71 0%, #9d25b0 99.18%);
-  /* box-shadow: 5px 1px 15px #cf99db; */
   border-radius: 8px;
   border: none;
   outline: none;
@@ -63,14 +59,11 @@ export const Button = styled.button`
 
   position: relative; //mobile
   bottom: -55px;
-  /* top: 50%; */
   left: 50%;
   transform: translate(-50%, -50%);
   cursor: pointer;
 
   @media screen and (min-width: 768px) {
-    /* font-size: 16px; */
-    /* text-align: left; */
     box-shadow: 0px 10px 25px #cf99db;
     width: 100%;
   }
