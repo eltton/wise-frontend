@@ -5,6 +5,7 @@ export const LoginForm = styled.form`
   padding-left: 28px;
   padding-right: 28px;
   max-width: 311px;
+  /* max-height: 377px; */
   margin-bottom: -40px; //mobile
 `;
 
@@ -65,10 +66,12 @@ export const Button = styled.button`
   /* top: 50%; */
   left: 50%;
   transform: translate(-50%, -50%);
+  cursor: pointer;
 
   @media screen and (min-width: 768px) {
     /* font-size: 16px; */
     /* text-align: left; */
+    box-shadow: 0px 10px 25px #cf99db;
     width: 100%;
   }
 `;
@@ -85,9 +88,12 @@ export const P = styled.p`
 
   a {
     color: #989fdb;
+    text-decoration: underline;
   }
-
   @media screen and (min-width: 768px) {
-    /* font-size: 16px; */
+    a {
+      color: #9d25b0;
+      text-decoration: underline;
+    }
   }
 `;

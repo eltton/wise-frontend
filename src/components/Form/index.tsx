@@ -120,6 +120,7 @@ const Form: React.FC<any> = () => {
           onChangeCallback={handleEmailChange}
           isValid={isEmailValid}
           onBlur={handleEmailBlur}
+          id="email"
         />
         {isEmailValid === false && (
           <ErrorMessage>Digite um e-mail válido;</ErrorMessage>
@@ -132,6 +133,7 @@ const Form: React.FC<any> = () => {
           isValid={isPasswordValid}
           onBlur={handlePasswordBlur}
           autoComplete="off"
+          id="password"
         />
         <Button type="submit">ENTRAR</Button>
 
