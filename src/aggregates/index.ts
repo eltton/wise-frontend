@@ -1,13 +1,5 @@
-/**
- * IMPORTS
- */
-import user from './user/reducer';
+import user from "./user/reducer";
 
-
-/**
- * EXPORTS
- */
-export default
-{
-    user
+export default {
+  user,
 };
